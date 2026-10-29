@@ -1,0 +1,11 @@
+# InvisioMZ — backend (Python 3.11+; testado com 3.15.1 em Windows 11)
+fastapi==0.159.1
+uvicorn==0.54.0
+python-multipart==0.0.32
+pydantic==2.14.1
+pydantic-settings==2.16.1
+pillow==13.0.0
+numpy==2.5.4
+cryptography==50.0.2
+httpx==0.28.1
+pyjwt==2.15.1

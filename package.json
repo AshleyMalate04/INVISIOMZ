@@ -1,0 +1,18 @@
+{
+  "name": "invisiomz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "InvisioMZ: esteganografia LSB + AES-256-GCM (React + FastAPI + Supabase). Projecto académico de Segurança Informática.",
+  "scripts": {
+    "db:start": "supabase start -x studio,edge-runtime,vector,logflare,imgproxy,realtime,mailpit,postgres-meta,supavisor",
+    "db:start:full": "supabase start",
+    "db:stop": "supabase stop",
+    "db:status": "supabase status",
+    "db:env": "supabase status -o env",
+    "db:reset": "supabase db reset"
+  },
+  "devDependencies": {
+    "supabase": "^2.121.0"
+  },
+  "license": "UNLICENSED"
+}

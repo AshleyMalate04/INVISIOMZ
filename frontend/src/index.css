@@ -1,0 +1,161 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/fraunces';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ───────────────────────────── Paleta InvisioMZ: creme + laranja ───────────────────────────── */
+:root {
+  --bg: #fbf4e6;
+  --bg-deep: #f5e9d0;
+  --surface: #fffbf2;
+  --surface-2: #f7ecd6;
+  --ink: #2b1b0f;
+  --ink-soft: #6b5441;
+  --line: #e7d7b8;
+  --line-strong: #d6c29a;
+  --brand: #c4560c;
+  --brand-hover: #a94809;
+  --brand-strong: #9a3f05; /* texto/ligações sobre creme (contraste AA) */
+  --brand-soft: #fce6cd;
+  --on-brand: #fff8ee;
+  --glow: #f08828;
+  --success: #3f6b2f;
+  --success-soft: #e4efd8;
+  --danger: #a82a1c;
+  --danger-soft: #fbe3de;
+  --warn: #8a5600;
+  --warn-soft: #fbecc8;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #1a120c;
+  --bg-deep: #140d08;
+  --surface: #241811;
+  --surface-2: #2d1f16;
+  --ink: #f8eedc;
+  --ink-soft: #c9b79d;
+  --line: #3d2c20;
+  --line-strong: #55402f;
+  --brand: #f28a2e;
+  --brand-hover: #ffa04d;
+  --brand-strong: #ffb36b;
+  --brand-soft: #3b2413;
+  --on-brand: #1a0e05;
+  --glow: #f08828;
+  --success: #9bcf84;
+  --success-soft: #1f2e18;
+  --danger: #ff9d8f;
+  --danger-soft: #3a1b17;
+  --warn: #f2c26b;
+  --warn-soft: #36270e;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-on-brand: var(--on-brand);
+  --color-glow: var(--glow);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    font-variation-settings: 'opsz' 72;
+  }
+  :focus-visible {
+    outline: 3px solid var(--glow);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: var(--glow);
+    color: #1a0e05;
+  }
+  button,
+  [role='button'],
+  summary,
+  label[for] {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@layer components {
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    box-shadow: 0 1px 0 rgb(255 255 255 / 0.5) inset, 0 8px 28px -18px rgb(120 60 10 / 0.35);
+  }
+  .grain {
+    background-image: radial-gradient(circle at 18% 12%, rgb(240 136 40 / 0.16), transparent 42%),
+      radial-gradient(circle at 88% 4%, rgb(196 86 12 / 0.1), transparent 38%);
+  }
+  .pixel-grid {
+    background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: radial-gradient(ellipse at 50% 40%, #000 20%, transparent 75%);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
